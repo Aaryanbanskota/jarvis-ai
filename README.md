@@ -4,7 +4,11 @@ Welcome to **JARVIS-MARK5**, a voice-powered AI assistant inspired by Iron Man's
 This version is simplified for **kids and beginners**, with a full walkthrough website, friendly design, and no coding skills required!
 
 ---
-click here to get help to downlodw and run ()
+<p align="center">
+  <a href="https://your-github-username.github.io/jarvis-guide" target="_blank">
+    <img src="https://img.shields.io/badge/📥%20Click%20Here%20to%20Download%20%26%20Run%20Guide-blue?style=for-the-badge" alt="Click here for help">
+  </a>
+</p>
 
 ## 📥 How to Download & Run (Super Easy)
 
