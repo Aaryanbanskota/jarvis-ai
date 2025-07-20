@@ -149,7 +149,7 @@ MIT License – free for personal and commercial use.
 Original codebase by [@Likhithsai2580](https://github.com/Likhithsai2580) –  
 💡 *Big thanks for creating the powerful JARVIS system!*  
 
-Website version and beginner guide packaged by **Evan**.  
+Website version and beginner guide packaged by **Aaryan**.  
 Now even kids can use JARVIS! 🧒⚡
 
 ---
