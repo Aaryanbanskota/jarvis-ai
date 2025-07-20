@@ -5,8 +5,8 @@ This version is simplified for **kids and beginners**, with a full walkthrough w
 
 ---
 <p align="center">
-  <a href="https://your-github-username.github.io/jarvis-guide" target="_blank">
-    <img src="https://img.shields.io/badge/📥%20Click%20Here%20to%20Download%20%26%20Run%20Guide-blue?style=for-the-badge" alt="https://aaryanbanskota.github.io/jarvis-ai/">
+  <a href="https://aaryanbanskota.github.io/jarvis-ai/" target="_blank">
+    <img src="https://img.shields.io/badge/📥%20Click%20Here%20to%20Download%20%26%20Run%20Guide-blue?style=for-the-badge" alt="need help">
   </a>
 </p>
 
