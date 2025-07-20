@@ -10,6 +10,7 @@
     :root {
       --primary: #00bfff;
       --secondary: #00ffcc;
+      --accent: #ff6bff;
       --dark-bg: rgba(0, 0, 0, 0.85);
       --code-bg: #1e1e1e;
       --text-light: #ffffff;
@@ -34,6 +35,18 @@
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
     }
     
     h1, h2, h3 {
@@ -44,7 +57,11 @@
     h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
-      color: var(--secondary);
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
     h2 {
@@ -72,6 +89,7 @@
       font-family: 'Consolas', 'Monaco', monospace;
       margin: 15px 0;
       position: relative;
+      border-left: 3px solid var(--secondary);
     }
     
     .copy-btn {
@@ -96,7 +114,7 @@
       margin: 20px auto;
       padding: 15px 30px;
       font-size: 1.1rem;
-      background-color: var(--primary);
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -105,12 +123,13 @@
       text-decoration: none;
       transition: all 0.3s;
       width: fit-content;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     
     button:hover, .btn:hover {
-      background-color: #0099cc;
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 7px 15px rgba(0,0,0,0.2);
+      filter: brightness(1.1);
     }
     
     a {
@@ -120,7 +139,7 @@
     }
     
     a:hover {
-      color: #00ccaa;
+      color: var(--accent);
       text-decoration: underline;
     }
     
@@ -128,6 +147,8 @@
       margin-bottom: 35px;
       padding-bottom: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      animation: fadeIn 0.5s ease-out;
     }
     
     .step:last-child {
@@ -225,12 +246,23 @@
         font-size: 0.9rem;
         padding: 10px;
       }
+      
+      .flex-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
     }
     
     /* Animation for completed steps */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     
     .completed {
@@ -253,12 +285,13 @@
       background-color: rgba(255,255,255,0.1);
       border-radius: 10px;
       margin: 20px 0;
+      overflow: hidden;
     }
     
     .progress-bar {
       height: 10px;
       border-radius: 10px;
-      background-color: var(--primary);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       width: 0%;
       transition: width 0.5s ease;
     }
@@ -273,34 +306,134 @@
     /* Accordion for troubleshooting */
     .accordion {
       margin: 15px 0;
+      border-radius: 5px;
+      overflow: hidden;
     }
     
     .accordion-header {
       background: rgba(255,255,255,0.1);
       padding: 12px 15px;
       cursor: pointer;
-      border-radius: 5px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: all 0.3s;
+    }
+    
+    .accordion-header:hover {
+      background: rgba(255,255,255,0.15);
     }
     
     .accordion-content {
       padding: 15px;
       background: rgba(0,0,0,0.3);
-      border-radius: 0 0 5px 5px;
       display: none;
     }
     
     .accordion.active .accordion-content {
       display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    /* GitHub star button */
+    .github-star {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #24292e;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .github-star:hover {
+      background: #2c3138;
+      transform: translateY(-2px);
+    }
+    
+    /* Floating action button */
+    .fab-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s;
+    }
+    
+    .fab-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+    
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 200px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Confetti effect */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      opacity: 0;
+      z-index: 1000;
+      animation: confettiFall 5s ease-out;
+    }
+    
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1><i class="fas fa-robot"></i> JARVIS AI - Complete Installation Guide</h1>
-    <h3>By <a href="https://github.com/Likhithsai2580" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> @Likhithsai2580</a> | Enhanced Guide</h3>
+    <h3>By <a href="https://github.com/Aaryanbanskota" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> @Aaryan</a> | Enhanced Guide</h3>
     
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
@@ -311,10 +444,10 @@
       <h2><i class="fas fa-download"></i> Step 1: Download the Project</h2>
       <p>Get the latest version of JARVIS from GitHub:</p>
       <div class="flex-buttons">
-        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5', '_blank')">
-          <i class="fab fa-github"></i> Download JARVIS
+        <button onclick="window.open('https://github.com/Aaryanbanskota/jarvis-ai', '_blank')">
+          <i class="fab fa-github"></i> GitHub Repository
         </button>
-        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5/archive/refs/heads/main.zip', '_blank')">
+        <button onclick="window.open('https://github.com/Aaryanbanskota/jarvis-ai/archive/refs/heads/main.zip', '_blank')">
           <i class="fas fa-file-archive"></i> Direct Download
         </button>
       </div>
@@ -511,6 +644,11 @@
           </ol>
         </div>
       </div>
+      
+      <div class="note">
+        <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> If you're still facing issues, copy the error message from your terminal and paste it into any AI assistant (like ChatGPT, Gemini, or Copilot) - it can often help diagnose the problem!
+      </div>
+      
       <button class="btn" onclick="completeStep(7)">Mark as Complete</button>
     </div>
 
@@ -523,6 +661,7 @@
           <li>"Open Google"</li>
           <li>"Tell me a joke"</li>
           <li>"Set a timer for 5 minutes"</li>
+          <li>"Play some music"</li>
         </ul>
       </div>
       
@@ -535,11 +674,34 @@
         <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5/discussions', '_blank')">
           <i class="fas fa-comments"></i> Community Help
         </button>
-        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5', '_blank')">
+        <button id="starBtn" onclick="starOnGitHub()" style="background: linear-gradient(45deg, #ff6bff, #00bfff);">
           <i class="fas fa-star"></i> Star on GitHub
         </button>
       </div>
+      
+      <div style="text-align: center; margin-top: 30px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+        <p>If this guide helped you, please consider starring the repository to support the developer!</p>
+        <a href="https://github.com/Aaryanbanskota/jarvis-ai" class="github-star" target="_blank">
+          <i class="fab fa-github"></i> Star guide
+        </a>
+      </div>
+      
+      <div class="note" style="margin-top: 30px;">
+        <strong><i class="fas fa-heart"></i> Support the Developer:</strong>
+        <p>This project is maintained by <a href="https://github.com/Likhithsai2580" target="_blank">@Likhithsai2580</a>. Your stars and contributions help improve JARVIS for everyone!</p>
+        <p>Connect with me:</p>
+        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 10px;">
+          <a href="https://github.com/Likhithsai2580" target="_blank" style="font-size: 24px;"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/likhith-sai-12345678/" target="_blank" style="font-size: 24px;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/LikhithSai" target="_blank" style="font-size: 24px;"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="fab-btn tooltip" onclick="starOnGitHub()">
+    <i class="fas fa-star"></i>
+    <span class="tooltiptext">Star on GitHub</span>
   </div>
 
   <script>
@@ -618,8 +780,46 @@
       
       // Change color when complete
       if (progress === 100) {
-        document.getElementById('progressBar').style.backgroundColor = 'limegreen';
+        document.getElementById('progressBar').style.background = 'linear-gradient(90deg, #00ff00, #00bfff)';
         document.getElementById('progressText').textContent = 'Installation Complete!';
+        createConfetti();
+      }
+    }
+    
+    // GitHub star function
+    function starOnGitHub() {
+      window.open('https://github.com/Aaryanbanskota/jarvis-ai', '_blank');
+      createConfetti();
+      
+      // Change button temporarily
+      const starBtn = document.getElementById('starBtn');
+      if (starBtn) {
+        starBtn.innerHTML = '<i class="fas fa-check"></i> Thank You!';
+        starBtn.style.background = 'linear-gradient(45deg, #00ff00, #00bfff)';
+        setTimeout(() => {
+          starBtn.innerHTML = '<i class="fas fa-star"></i> Star on GitHub';
+          starBtn.style.background = 'linear-gradient(45deg, #ff6bff, #00bfff)';
+        }, 3000);
+      }
+    }
+    
+    // Confetti effect
+    function createConfetti() {
+      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+      
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = Math.random() * 10 + 5 + 'px';
+        confetti.style.height = Math.random() * 10 + 5 + 'px';
+        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
       }
     }
     
