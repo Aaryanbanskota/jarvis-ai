@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Step-by-step guide to install JARVIS AI assistant">
+  <title>Install JARVIS - Complete Beginner's Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00bfff;
+      --secondary: #00ffcc;
+      --dark-bg: rgba(0, 0, 0, 0.85);
+      --code-bg: #1e1e1e;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/534164/pexels-photo-534164.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      background-color: var(--dark-bg);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    h1, h2, h3 {
+      text-align: center;
+      margin-top: 0;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--secondary);
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin: 25px 0 15px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+    
+    pre {
+      background: var(--code-bg);
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      color: #00ff00;
+      font-family: 'Consolas', 'Monaco', monospace;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .copy-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .copy-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    button, .btn {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      background-color: var(--primary);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      width: fit-content;
+    }
+    
+    button:hover, .btn:hover {
+      background-color: #0099cc;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: #00ccaa;
+      text-decoration: underline;
+    }
+    
+    .step {
+      margin-bottom: 35px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .step:last-child {
+      border-bottom: none;
+    }
+    
+    code {
+      background: rgba(255,255,255,0.1);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.9em;
+    }
+    
+    ul, ol {
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+    
+    .note {
+      background: rgba(0,191,255,0.2);
+      border-left: 4px solid var(--primary);
+      padding: 15px;
+      border-radius: 0 5px 5px 0;
+      margin: 15px 0;
+    }
+    
+    .warning {
+      background: rgba(255,165,0,0.2);
+      border-left: 4px solid orange;
+      padding: 15px;
+      border-radius: 0 5px 5px 0;
+      margin: 15px 0;
+    }
+    
+    .success {
+      background: rgba(0,255,0,0.2);
+      border-left: 4px solid limegreen;
+      padding: 15px;
+      border-radius: 0 5px 5px 0;
+      margin: 15px 0;
+    }
+    
+    .flex-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .tabs {
+      display: flex;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
+    
+    .tab.active {
+      border-bottom: 3px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        margin: 15px;
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      pre {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+    }
+    
+    /* Animation for completed steps */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .completed {
+      opacity: 0.7;
+    }
+    
+    .completed h2 {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+    
+    .checkmark {
+      color: limegreen;
+      margin-left: 10px;
+    }
+    
+    /* Progress tracker */
+    .progress-container {
+      width: 100%;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    
+    .progress-bar {
+      height: 10px;
+      border-radius: 10px;
+      background-color: var(--primary);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+    
+    .progress-text {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    
+    /* Accordion for troubleshooting */
+    .accordion {
+      margin: 15px 0;
+    }
+    
+    .accordion-header {
+      background: rgba(255,255,255,0.1);
+      padding: 12px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .accordion-content {
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 0 0 5px 5px;
+      display: none;
+    }
+    
+    .accordion.active .accordion-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-robot"></i> JARVIS AI - Complete Installation Guide</h1>
+    <h3>By <a href="https://github.com/Likhithsai2580" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> @Likhithsai2580</a> | Enhanced Guide</h3>
+    
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+      <div class="progress-text" id="progressText">0% Complete</div>
+    </div>
+
+    <div class="step" id="step1">
+      <h2><i class="fas fa-download"></i> Step 1: Download the Project</h2>
+      <p>Get the latest version of JARVIS from GitHub:</p>
+      <div class="flex-buttons">
+        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5', '_blank')">
+          <i class="fab fa-github"></i> Download JARVIS
+        </button>
+        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5/archive/refs/heads/main.zip', '_blank')">
+          <i class="fas fa-file-archive"></i> Direct Download
+        </button>
+      </div>
+      <div class="note">
+        <strong><i class="fas fa-info-circle"></i> Note:</strong> If you're new to GitHub, click "Code" → "Download ZIP" on the repository page.
+      </div>
+      <button class="btn" onclick="completeStep(1)">Mark as Complete</button>
+    </div>
+
+    <div class="step" id="step2">
+      <h2><i class="fab fa-python"></i> Step 2: Install Python</h2>
+      <p>JARVIS requires Python 3.7 or higher. Download the latest version:</p>
+      <button onclick="window.open('https://www.python.org/downloads/', '_blank')">
+        <i class="fab fa-python"></i> Download Python
+      </button>
+      
+      <h3>Installation Instructions:</h3>
+      <ol>
+        <li>Run the downloaded installer</li>
+        <li>Check <strong>"Add Python to PATH"</strong> at the bottom</li>
+        <li>Click "Install Now" (recommended for beginners)</li>
+        <li>After installation, verify by opening Command Prompt and typing: <code>python --version</code></li>
+      </ol>
+      
+      <div class="warning">
+        <strong><i class="fas fa-exclamation-triangle"></i> Important:</strong> If you get "'python' is not recognized" error, you need to <a href="https://datatofish.com/add-python-to-windows-path/" target="_blank">add Python to PATH manually</a>.
+      </div>
+      <button class="btn" onclick="completeStep(2)">Mark as Complete</button>
+    </div>
+
+    <div class="step" id="step3">
+      <h2><i class="fas fa-folder-open"></i> Step 3: Extract and Open the Project</h2>
+      <p>After downloading:</p>
+      <ol>
+        <li>Right-click the ZIP file and select "Extract All"</li>
+        <li>Choose a location you can easily find (like Desktop)</li>
+        <li>Open the extracted folder (<code>JARVIS-MARK5-main</code>)</li>
+      </ol>
+      
+      <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'vscode')">VS Code</div>
+        <div class="tab" onclick="openTab(event, 'other')">Other Editors</div>
+      </div>
+      
+      <div id="vscode" class="tab-content active">
+        <p>We recommend using VS Code for the best experience:</p>
+        <button onclick="window.open('https://code.visualstudio.com/download', '_blank')">
+          <i class="fas fa-download"></i> Download VS Code
+        </button>
+        <p>After installing VS Code:</p>
+        <ol>
+          <li>Open VS Code</li>
+          <li>Click "File" → "Open Folder"</li>
+          <li>Select the JARVIS folder you extracted</li>
+          <li>Install the Python extension when prompted</li>
+        </ol>
+      </div>
+      
+      <div id="other" class="tab-content">
+        <p>Alternative methods to open the project:</p>
+        <ul>
+          <li><strong>File Explorer:</strong> Simply navigate to the folder</li>
+          <li><strong>Command Line:</strong> Right-click in the folder while holding Shift and select "Open PowerShell window here"</li>
+        </ul>
+      </div>
+      <button class="btn" onclick="completeStep(3)">Mark as Complete</button>
+    </div>
+
+    <div class="step" id="step4">
+      <h2><i class="fas fa-cogs"></i> Step 4: Install Dependencies</h2>
+      <p>JARVIS needs several Python packages to work. Install them all at once:</p>
+      
+      <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'powershell')">PowerShell</div>
+        <div class="tab" onclick="openTab(event, 'cmd')">Command Prompt</div>
+        <div class="tab" onclick="openTab(event, 'terminal')">VS Code Terminal</div>
+      </div>
+      
+      <div id="powershell" class="tab-content active">
+        <p>In PowerShell (right-click in folder + Shift + "Open PowerShell window here"):</p>
+        <pre id="code1">pip install -r requirements.txt</pre>
+        <button class="copy-btn" onclick="copyToClipboard('code1')"><i class="far fa-copy"></i></button>
+      </div>
+      
+      <div id="cmd" class="tab-content">
+        <p>In Command Prompt:</p>
+        <pre id="code2">pip install -r requirements.txt</pre>
+        <button class="copy-btn" onclick="copyToClipboard('code2')"><i class="far fa-copy"></i></button>
+      </div>
+      
+      <div id="terminal" class="tab-content">
+        <p>In VS Code Terminal (Ctrl+` to open):</p>
+        <pre id="code3">pip install -r requirements.txt</pre>
+        <button class="copy-btn" onclick="copyToClipboard('code3')"><i class="far fa-copy"></i></button>
+      </div>
+      
+      <div class="note">
+        <strong><i class="fas fa-info-circle"></i> Note:</strong> If you get permission errors, try: <code>pip install --user -r requirements.txt</code>
+      </div>
+      
+      <div class="warning">
+        <strong><i class="fas fa-exclamation-triangle"></i> Troubleshooting:</strong> If pip isn't recognized, try: <code>python -m pip install -r requirements.txt</code>
+      </div>
+      <button class="btn" onclick="completeStep(4)">Mark as Complete</button>
+    </div>
+
+    <div class="step" id="step5">
+      <h2><i class="fas fa-power-off"></i> Step 5: Launch JARVIS</h2>
+      <p>Run JARVIS with this command in the same terminal:</p>
+      <pre id="code4">python jarvis.py</pre>
+      <button class="copy-btn" onclick="copyToClipboard('code4')"><i class="far fa-copy"></i></button>
+      
+      <div class="success">
+        <strong><i class="fas fa-check-circle"></i> First Run Tips:</strong>
+        <ul>
+          <li>Allow microphone access when prompted</li>
+          <li>First launch may take longer as it downloads additional resources</li>
+          <li>Speak clearly and try simple commands like "Hello" or "What time is it?"</li>
+        </ul>
+      </div>
+      <button class="btn" onclick="completeStep(5)">Mark as Complete</button>
+    </div>
+
+    <div class="step" id="step6">
+      <h2><i class="fas fa-puzzle-piece"></i> Step 6: Handle Missing Models</h2>
+      <p>If you encounter missing model errors:</p>
+      <ol>
+        <li>Check the error message for the exact model name</li>
+        <li>Visit the <a href="https://github.com/Likhithsai2580/JARVIS-MARK5/issues" target="_blank">GitHub Issues</a> page</li>
+        <li>Search for the model name or error message</li>
+        <li>Download the model from the provided link</li>
+        <li>Place it in the <code>models</code> folder</li>
+      </ol>
+      
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Common Model Solutions <i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="accordion-content">
+          <ul>
+            <li><strong>vosk-model-small-en-us-0.15:</strong> <a href="https://alphacephei.com/vosk/models" target="_blank">Download here</a></li>
+            <li><strong>en_core_web_sm:</strong> Run <code>python -m spacy download en_core_web_sm</code></li>
+            <li><strong>Other missing packages:</strong> Try <code>pip install package_name</code></li>
+          </ul>
+        </div>
+      </div>
+      <button class="btn" onclick="completeStep(6)">Mark as Complete</button>
+    </div>
+
+    <div class="step" id="step7">
+      <h2><i class="fas fa-question-circle"></i> Troubleshooting</h2>
+      
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>JARVIS won't start <i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="accordion-content">
+          <ul>
+            <li>Make sure Python is installed correctly (check with <code>python --version</code>)</li>
+            <li>Verify all dependencies installed (<code>pip list</code> should show all packages from requirements.txt)</li>
+            <li>Try running as administrator</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Module not found errors <i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="accordion-content">
+          <p>For any missing module, try:</p>
+          <pre id="code5">pip install module_name</pre>
+          <button class="copy-btn" onclick="copyToClipboard('code5')"><i class="far fa-copy"></i></button>
+          <p>Common modules that might be missing:</p>
+          <ul>
+            <li><code>pip install pyttsx3</code> - Text-to-speech</li>
+            <li><code>pip install speechrecognition</code> - Voice recognition</li>
+            <li><code>pip install pyaudio</code> - Audio input (may need <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio" target="_blank">manual installation</a>)</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>Microphone not working <i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="accordion-content">
+          <ol>
+            <li>Check your microphone permissions in Windows Settings</li>
+            <li>Try a different microphone if available</li>
+            <li>Test your microphone with another application</li>
+            <li>Update your audio drivers</li>
+            <li>As a last resort, try typing commands instead of speaking</li>
+          </ol>
+        </div>
+      </div>
+      <button class="btn" onclick="completeStep(7)">Mark as Complete</button>
+    </div>
+
+    <div class="step">
+      <h2><i class="fas fa-party-horn"></i> Congratulations!</h2>
+      <div class="success">
+        <p>You've successfully installed JARVIS! Here are some things to try:</p>
+        <ul>
+          <li>"What's the weather today?"</li>
+          <li>"Open Google"</li>
+          <li>"Tell me a joke"</li>
+          <li>"Set a timer for 5 minutes"</li>
+        </ul>
+      </div>
+      
+      <p>For advanced customization, check the <code>config.ini</code> file in the project folder.</p>
+      
+      <div class="flex-buttons">
+        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5/issues', '_blank')">
+          <i class="fas fa-bug"></i> Report Issues
+        </button>
+        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5/discussions', '_blank')">
+          <i class="fas fa-comments"></i> Community Help
+        </button>
+        <button onclick="window.open('https://github.com/Likhithsai2580/JARVIS-MARK5', '_blank')">
+          <i class="fas fa-star"></i> Star on GitHub
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Copy to clipboard function
+    function copyToClipboard(elementId) {
+      const element = document.getElementById(elementId);
+      const text = element.textContent;
+      navigator.clipboard.writeText(text.trim()).then(() => {
+        const btn = element.nextElementSibling;
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="far fa-copy"></i>';
+        }, 2000);
+      });
+    }
+    
+    // Tab switching
+    function openTab(evt, tabName) {
+      const tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      const tabs = document.getElementsByClassName("tab");
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+    // Accordion functionality
+    function toggleAccordion(header) {
+      const accordion = header.parentElement;
+      accordion.classList.toggle("active");
+      
+      const icon = header.querySelector('i');
+      if (accordion.classList.contains("active")) {
+        icon.classList.remove("fa-chevron-down");
+        icon.classList.add("fa-chevron-up");
+      } else {
+        icon.classList.remove("fa-chevron-up");
+        icon.classList.add("fa-chevron-down");
+      }
+    }
+    
+    // Progress tracking
+    const totalSteps = 7;
+    let completedSteps = 0;
+    
+    function completeStep(stepNumber) {
+      const step = document.getElementById(`step${stepNumber}`);
+      if (!step.classList.contains("completed")) {
+        step.classList.add("completed");
+        completedSteps++;
+        updateProgress();
+        
+        // Add checkmark
+        const header = step.querySelector('h2');
+        header.innerHTML += ' <i class="fas fa-check-circle checkmark"></i>';
+        
+        // Scroll to next step if not last
+        if (stepNumber < totalSteps) {
+          document.getElementById(`step${stepNumber + 1}`).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
+    
+    function updateProgress() {
+      const progress = (completedSteps / totalSteps) * 100;
+      document.getElementById('progressBar').style.width = `${progress}%`;
+      document.getElementById('progressText').textContent = `${Math.round(progress)}% Complete`;
+      
+      // Change color when complete
+      if (progress === 100) {
+        document.getElementById('progressBar').style.backgroundColor = 'limegreen';
+        document.getElementById('progressText').textContent = 'Installation Complete!';
+      }
+    }
+    
+    // Initialize first tab in each tab group
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabGroups = document.querySelectorAll('.tabs');
+      tabGroups.forEach(group => {
+        const firstTab = group.querySelector('.tab');
+        if (firstTab) firstTab.click();
+      });
+    });
+  </script>
+</body>
+</html>
